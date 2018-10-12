@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    /* font-display: block; */
+}
+
+body {
+    font-size: 16px;
+    color: #333;
+}
+
+/*top区域样式*/
+
+.banner-top .navigation {
+    /*导航部分颜色*/
+    background: #021523;
+}
+
+.navbar.navbar-default {
+    /*去掉自带的属性*/
+    background: none;
+    border: none;
+}
+
+.glyphicon {
+    /*字体图标*/
+    font-size: 30px;
+    color: #fff;
+}
+
+.banner-top .navigation h1 {
+    color: #fff;
+    display: inline-block;
+}
+
+.banner-top .navigation h4 {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #f40;
+}
+
+.banner-top {
+    background: url('./images/banner.jpg') no-repeat 0px 0px;
+    background-size: cover;
+    min-height: 700px;
+    /* 必须加最小高度，否则图片不显示*/
+}
+
+/*about区域样式*/
+
+.about {
+    background: #ccc;
+}
+
+.about .about-left {
+    background: url('./images/ab.jpg') no-repeat;
+    background-position: content content;
+    background-size: cover;
+    height: 640px;
+    /*必须要设高度，否则图片不显示*/
+}
+
+@media(max-width:1000px) {
+    .about .about-left {
+        width: 550px;
+        height: 550px;
+    }
+}
+
+.about-main h2 {
+    font-weight: bolder;
+}
+
+.about-main h5 {
+    text-transform: uppercase;
+    /*把小写变成大写*/
+    letter-spacing: 8px;
+    /*字间距*/
+    color: turquoise;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-indent: -0.5em;
+    /*首行缩进*/
+}
+
+.about-main span {
+    color: #f40;
+    font-style: italic;
+    /*斜体*/
+}
+
+/*show区域*/
+
+.show .heading {
+    text-align: center;
+}
+
+.show .heading h3 {
+    font-weight: bolder;
+    line-height: 100px;
+    font-size: 30px;
+}
+
+/*遮罩层实现原理：
+1. 把box设置relative定位，脱离文档流；
+2. 然后把textBox（遮住层）设置absolute相对于box进行定位；
+3. 利用scale缩放属性，一开始设置为0，鼠标附上去的时候为1出现；*/
+
+.show .pic .box {
+    position: relative;
+    padding: 0;
+    /*每个图片之间有padding*/
+}
+
+.show .pic .box img {
+    width: 100%;
+}
+
+.show .pic .textBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(35, 179, 167, 0.5);
+    transform: scale(0);
+    transition: all 0.7s ease;
+    text-align: center;
+    /*相机是引入的文本元素，这样可以进行居中*/
+}
+
+.show .pic .box:hover .textBox {
+    transform: scale(1);
+}
+
+.show .pic .textBox .glyphicon {
+    font-size: 30px;
+    color: #fff;
+    line-height: 100px;
+    position: absolute;
+    /*把相机设置居中*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    width: 100%;
+    line-height: 40px;
+}
+
+/*由于show区域设置定位，脱离文档流，所以需要清除浮动
+否则footer区域的图片会跑到下面去被遮住*/
+
+.show::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*footer区域*/
+
+.footer {
+    width: 100%;
+    height: 400px;
+    background: url('./images/banner.jpg') no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    padding-top: 100px;
+}
+
+.footer .camera {
+    text-align: center;
+}
+
+.footer .camera a span {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.footer .relation {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer .relation li {
+    display: inline-block;
+    margin: 20px;
+}
+
+.footer .relation li a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.footer .relation li a:hover {
+    opacity: 0.6;
+}
+
+.footer .relation li a span {
+    font-size: 14px;
+    line-height: 32px;
+}
+
+ul li:nth-of-type(1) span {
+    color: #3b5998;
+}
+
+ul li:nth-of-type(2) span {
+    color: #1da1f2;
+}
+
+ul li:nth-of-type(3) span {
+    color: #ea4c89;
+}
+
+ul li:nth-of-type(4) span {
+    color: #f26522;
+}
+
+.footer .dress p {
+    text-align: center;
+    color: #fff;
+    margin-top: 8%;
+}
+
+/*回到顶部*/
+
+.backTop span {
+    font-size: 30px;
+    position: fixed;
+    top: 90%;
+    right: 5%;
+    cursor: pointer;
+}
